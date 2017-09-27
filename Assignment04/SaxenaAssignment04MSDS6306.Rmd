@@ -1,0 +1,192 @@
+---
+title: "Assignment4Q1"
+author: "Asha Saxena"
+date: "September 24, 2017"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Q1.a. Navigate on GitHub to https://github.com/rudeboybert/fivethirtyeight and read README.md.Install the fivethirtyeight package.
+
+    install.packages("fivethirtyeight")
+
+### Output Q1.a
+    Installing package into 'C:/Users/ashas/Documents/R/win-library/3.3'
+    (as 'lib' is unspecified)
+    trying URL 'https://cran.rstudio.com/bin/windows/contrib/3.3/fivethirtyeight_0.3.0.zip'
+    Content type 'application/zip' length 4398780 bytes (4.2 MB)
+    downloaded 4.2 MB
+
+    package 'fivethirtyeight' successfully unpacked and MD5 sums checked
+
+    The downloaded binary packages are in
+	    C:\Users\ashas\AppData\Local\Temp\RtmpaU4pWl\downloaded_packages
+
+
+## Q1.b In the listing of Data sets in package 'fivethirtyeight,' assign the eighteenth data set to an object 'df.'
+
+### eighteenth data set <- college_recent_grads
+    
+
+```{r , echo=TRUE}
+library(fivethirtyeight)
+data(package = "fivethirtyeight") 
+df<-data.frame(college_recent_grads)
+    class(df)
+```
+
+## Q1.c. Use a more detailed list of the data sets to write out the URL in a comment to the related news story.
+
+```{r, ECHO=TRUE}
+ head(df)
+```
+
+### Output fo 1c.
+# A tibble: 6 x 22
+    major_code                                  major
+           <int>                                  <chr>
+    1       5601                  Construction Services
+    2       6004      Commercial Art And Graphic Design
+    3       6211                 Hospitality Management
+    4       2201 Cosmetology Services And Culinary Arts
+    5       2001             Communication Technologies
+    6       3201                        Court Reporting
+      # ... with 20 more variables: major_category <chr>,
+      #   grad_total <int>, grad_sample_size <int>,
+      #   grad_employed <int>,
+      #   grad_employed_fulltime_yearround <int>,
+      #   grad_unemployed <int>, grad_unemployment_rate <dbl>,
+      #   grad_p25th <dbl>, grad_median <dbl>,
+      #   grad_p75th <int>, nongrad_total <int>,
+      #   nongrad_employed <int>,
+      #   nongrad_employed_fulltime_yearround <int>,
+      #   nongrad_unemployed <int>,
+      #   nongrad_unemployment_rate <dbl>,
+      #   nongrad_p25th <dbl>, nongrad_median <dbl>,
+      #   nongrad_p75th <dbl>, grad_share <dbl>,
+      #   grad_premium <dbl>
+  
+## Q1.d. Using R command(s), give the dimensions and column names of this data frame.
+    
+    dim(college_grad_students)
+    
+### Output of 1d.
+```{r, ECHO=TRUE}
+dim(college_grad_students)
+```
+
+    [1] 173  21
+    
+### Column names of this data frame
+    
+     colnames(college_grad_students)
+    
+### Output for column name.
+```{r, ECHO=TRUE}
+colnames(college_grad_students)
+```
+
+    [1] "major_code"                          "major"                               "major_category"                   
+    [4] "grad_total"                          "grad_sample_size"                    "grad_employed"                   
+    [7] "grad_employed_fulltime_yearround"    "grad_unemployed"                     "grad_unemployment_rate"          
+    [10] "grad_p25th"                          "grad_median"                         "grad_p75th"                     
+    [13] "nongrad_total"                       "nongrad_employed"                 "nongrad_employed_fulltime_yearround"
+    [16] "nongrad_unemployed"                  "nongrad_unemployment_rate"           "nongrad_p25th"              
+    [19] "nongrad_median"                      "nongrad_p75th"                       "grad_share"             
+    [22] "grad_premium"                       
+
+    
+## Q2a. Write an R command that gives you the column names of the data frame. Right after that, write one that counts the number of columns but not rows.
+
+    ncol(college_recent_grads)
+```{r, ECHO=TRUE}
+ncol(college_recent_grads)
+```
+
+    
+### Output for 2a.
+
+    [1] 21
+    
+## 2b. Generate a count of each unique major_category in the data frame.This should look like a matrix or data frame containing the major_category and the frequency it occurs in the dataset. Assign it to major_count.
+
+    major_count <- (df$major_category)
+    count(major_count)
+```{r, ECHO=TRUE}
+library("plyr")
+    major_count <- (df$major_category)
+    count(major_count)
+```
+
+### Output of 2b.
+                                             x freq
+    1      Agriculture & Natural Resources   10
+    2                                 Arts    8
+    3               Biology & Life Science   14
+    4                             Business   13
+    5          Communications & Journalism    4
+    6              Computers & Mathematics   11
+    7                            Education   16
+    8                          Engineering   29
+    9                               Health   12
+    10           Humanities & Liberal Arts   15
+    11 Industrial Arts & Consumer Services    7
+    12                   Interdisciplinary    1
+    13                 Law & Public Policy    5
+    14                   Physical Sciences   10
+    15            Psychology & Social Work    9
+    16                      Social Science    9
+ 
+## 2c. Make a barplot of major_count
+
+    library("plyr")
+    MajorCountBarPlot <- count(major_count)
+    count(major_count)
+    barplot(MajorCountBarPlot$freq, horiz = TRUE, col = 'green', names= MajorCountBarPlot$x, xlim=c(0,30), xlab =     "Major Category", main = 'Majors by Major Category')
+
+### Output for 2c.
+
+library("plyr")
+MajorCountBarPlot <- count(major_count)
+count(major_count)
+barplot(MajorCountBarPlot$freq, horiz = TRUE, col = 'green', names= MajorCountBarPlot$x, xlim=c(0,30), xlab =     "Major Category", main = 'Majors by Major Category')  
+
+
+```{r, ECHO=TRUE}
+library("plyr")
+MajorCountBarPlot <- count(major_count)
+count(major_count)
+par(las=2)
+barplot(MajorCountBarPlot$freq, horiz = TRUE, col = 'green', names= MajorCountBarPlot$x, xlim=c(0,30), xlab =     "Major Category", main = 'Majors by Major Category')  
+```
+
+
+## 2d. Write the fivethirtyeight data to a csv file.
+
+```{r, ECHO=TRUE}
+write.csv(df, file = "fivethirtyeight.csv",row.names=FALSE)
+```
+
+## 3a. Start a new repository on GitHub for your SMU MSDS homework.Add whatever you would like to this repo.
+
+    https://github.com/ashasaxena/SMU
+    
+## 3b. Create a README.md file which explains the purpose of the repository
+
+    https://github.com/ashasaxena/SMU/blob/master/Assignment04/README.md
+    
+## 3c. In one (or more) of the nested directories, post your RMarkdown script, HTML file,and data from 'fivethirtyeight.'
+
+    https://github.com/ashasaxena/SMU/tree/master/Assignment04
+    
+### Make sure that in your README or elsewhere that you credit fivethirtyeight in some way. 
+    
+    https://github.com/ashasaxena/SMU/blob/master/Assignment04/README.md
+    
+## 3d. In your RMarkdown script, please provide the link to this GitHub so the grader can see it.
+
+    See above.
+    
