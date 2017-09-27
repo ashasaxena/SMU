@@ -7,11 +7,11 @@ mkdir Assignment04
 Copied R Markdown, html and data to this Assignment04
 
 
-Local COmmit
+Local Commit
 
 git add .
 git commit -m "Assignmet 04"
 
-Git Pusht to github
+Git Push to github
 
 git push
