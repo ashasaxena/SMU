@@ -3,15 +3,15 @@ library(data.table)
 library(dplyr)
 library(ggthemes)
 
-brew <- read.csv('Breweries.csv')
-beer <- read.csv('Beers.csv')
+source(file = 'script/makefile.R')
 
+#question 1
 q1 <- brew %>% group_by(brew$State) %>% summarize(n = n())
 head(q1)
 
-q2 <- merge(x = brew,y = beer,by.x = 'Brew_ID', by.y = 'Brewery_id')
-head(q2, 6)
-tail(q2, 6)
+#Question 2
+head(suds, 6)
+tail(suds, 6)
 
 q3 <- sapply(q2, function(x) sum(length(which(is.na(q2)))))
 print(q3)
