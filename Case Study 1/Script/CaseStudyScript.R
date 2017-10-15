@@ -3,10 +3,8 @@ library(data.table)
 library(dplyr)
 library(ggthemes)
 
-source(file = 'script/makefile.R')
-
 #question 1
-q1 <- brew %>% group_by(brew$State) %>% summarize(n = n())
+q1 <- Brew %>% group_by(Brew$State) %>% summarize(n = n())
 head(q1)
 
 #Question 2
