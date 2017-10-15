@@ -34,13 +34,18 @@ q5b <- ggplot(data = q4, aes(x = State,y = median_IBU)) +
 
 print(q5a)
 print(q5b)
-                                              
-q6 <- summary(q2$ABV)
 
+#summary of ABV                                              
+q6 <- summary(q2$ABV)
 print(q6)
 
+#scatter plot
 q7 <- ggplot(data = q2, aes(x = ABV,y = IBU)) + 
   geom_point() +
   labs(x = 'ABV', y = 'IBU',title = 'International Bitterness Content vs. Alcoholic Content') +
   theme_economist()  
 print(q7)  
+
+#linear reegression model
+q7model <- lm(IBU ~ ABV, q2)
+summary(q7model)
