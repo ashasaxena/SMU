@@ -1,0 +1,88 @@
+---
+title: "PROECT BEER: By C.Martinez & A. Saxena"
+author: "Casey Martinez & Asha Saxena"
+date: "October 15, 2017"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+# PROJECT TITLE: BEER
+
+## PROJECT GOALS & OBJECTIVES
+
+Project Goal is to identify an apparent relationship between the bitterness of the beer and its alcoholic content. 
+
+Objective of the project is to analyze the following:
+  1) The beer and brewery data set 
+  2) By State
+  3) By Alcoholic Content (ABV)
+  4) By Bitterness Level(IBU)
+  
+
+## PROJECT SCOPE & PHASES
+
+Scope of this project is as follows:
+  1) Analyzing the data set provided for breweries and beer in United States
+  2) Cleaning the Data
+  3) Computing the data set 
+  4) Evaluating the statistical results
+  5) Conclusion 
+
+
+## PHASE 1: ANALYZING THE DATA
+
+### Q1. How many breweries are present in each state?
+
+We found the data set contains 50 states in additon there is also infomation about thecapital Washington DC, total of 51 values for State.
+
+
+### Q2. Merge beer data with the breweries data. Print the first Six observations and the last six observations to check the merged file.
+
+We then merged the beer and breweries data set and print the first six and the last six observations to confirm the merged file.
+
+
+## PHASE 2: DATA CLEANZING
+
+### Q3. Report the number of NA's in each column.
+
+First step in cleaning the data is to remove the null values. 
+
+## PHASE 3: COMPUTATION 
+
+### Q4. Compute the median alcohol content and international bitterness unit for each state. Plot a bar chart to compare.
+
+After merging and cleaning the data, we looked at the median alcohol content and international bitterness unit for each state.
+
+Please see attached the bar chart to compare.
+
+
+
+
+
+### Q5. Which state has the maximum alcoholic (ABV) beer? Which state has the most bitter (IBU) beer?
+
+We then looked at the data for state has the maximum alcoholic (ABV) beer and the state that has the most bitter (IBU) beer.
+
+We found the following:
+
+**State has the maximum alcoholic (ABV) beer: Colorado (CO)**
+**State has themostbitter (IBU) beer: Missouri (MO)**
+
+
+## PHASE 4: EVALUATING STATISTICAL RESULTS
+
+### Q6. Summary statistics for the ABV variable.
+
+
+
+
+## PHASE 5: CONCLUSION
+
+### Q7. Is there an apparent relationship between the bitterness of the beer and its alcoholic content? Draw a scatter plot.
+
+We see here is a linear relationship between the bitterness of the beer and its alcoholic content.
+
+
+
