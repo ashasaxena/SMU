@@ -7,7 +7,7 @@ output: html_document
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
-knitr::opts_knit$set(root.dir = 'C:\\Users\\Casiano\\Documents\\SMU Data Science\\SMU\\Case Study 1')
+knitr::opts_knit$set(root.dir = 'C:\\Users\\ashas\\github\\SMU\\Case Study 1')
 ```
 ## GOALS & OBJECTIVES
 
