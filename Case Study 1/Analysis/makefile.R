@@ -5,6 +5,6 @@
 brew <- read.csv('data/Breweries.csv')
 beer <- read.csv('data/Beers.csv')
 
-suds <- merge(x = brew,y = beer,by.x = 'Brew_ID', by.y = 'Brewery_id')
+merged_data <- merge(x = brew,y = beer,by.x = 'Brew_ID', by.y = 'Brewery_id')
 
-write.csv(suds,file = 'data/suds.csv')
+write.csv(merged_data,file = 'data/merged_data.csv')

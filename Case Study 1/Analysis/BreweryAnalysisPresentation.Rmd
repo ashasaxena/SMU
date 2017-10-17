@@ -139,7 +139,8 @@ We see here is a linear relationship between the bitterness of the beer and its 
 q7 <- ggplot(data = merged_data, aes(x = ABV,y = IBU)) + 
   geom_point() +
   labs(x = 'ABV', y = 'IBU',title = 'International Bitterness Content vs. Alcoholic Content') +
-  theme_economist()  
+  theme_economist() +
+  geom_smooth(method = 'lm')
 print(q7)  
 
 #linear reegression model

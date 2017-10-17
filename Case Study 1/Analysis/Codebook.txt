@@ -1,0 +1,5 @@
+Beer Case Study Codebook
+
+beer        <- dataframe of raw data file beer.csv
+brew        <- dataframe of raw data file breweries.csv
+merged_data <- dataframe of beer and brew merged by Brewery_ID
