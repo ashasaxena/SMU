@@ -1,5 +1,5 @@
 ---
-title: "PROECT BEER: By C.Martinez & A. Saxena"
+title: "PROECT BEER""
 author: "Casey Martinez & Asha Saxena"
 date: "October 15, 2017"
 output: html_document
@@ -43,7 +43,7 @@ source('Analysis/makefile.R')
 ### Q1. How many breweries are present in each state?
 
 We found the data set contains 50 states in additon there is also infomation about thecapital Washington DC, total of 51 values for State.
-```{r,echo=TRUE}
+```{r,echo=TRUE,fig.width=15,fig.height=5}
 #question 1
 q1 <- brew %>% group_by(brew$State) %>% summarize(TotalBreweries = n())
 q1 <- as.data.frame(q1)
@@ -53,7 +53,6 @@ q1_plot <- ggplot(data = q1, aes(x = as.factor(q1$`brew$State`),y = TotalBreweri
   labs(y = 'Median ABV',title = 'Median Alcohol Content') +
   theme_economist()
 print(q1_plot)
-
 ```
 
 ### Q2. Merge beer data with the breweries data. Print the first Six observations and the last six observations to check the merged file.
@@ -85,8 +84,7 @@ After merging and cleaning the data, we looked at the median alcohol content and
 
 Please see attached the bar chart to compare.
 
-```{r,echo=TRUE}
-
+```{r,echo=TRUE,fig.width=15,fig.height=5}
 #question4
 q4 <- merged_data %>% group_by(merged_data$State) %>% summarize(median_ABV = median(ABV), median_IBU = median(IBU))
 q4 <- as.data.frame(q4)
