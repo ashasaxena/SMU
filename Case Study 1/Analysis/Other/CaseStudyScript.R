@@ -16,6 +16,14 @@ q1_plot <- ggplot(data = q1, aes(x = as.factor(q1$`brew$State`),y = TotalBreweri
   theme_economist()
 print(q1_plot)
 
+
+
+
+
+
+
+
+
 #Question 2
 head(merged_data, 6)
 tail(merged_data, 6)

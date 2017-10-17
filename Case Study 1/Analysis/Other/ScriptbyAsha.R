@@ -8,6 +8,18 @@ library(sp)
 library(maptools)
 library(readr) 
 
+states <- map_data("state")
+ggplot(data = states) + 
+  geom_polygon(aes(x = long, y = lat, group = group), color = "white") + 
+  coord_fixed(1.3) +
+  guides(fill=FALSE)  # do this to leave off the color legend
+
+
+
+
+
+
+
 stateFromLower <-function(x) {
   #read 51 state codes into local variable [includes DC (Washington D.C.)]
   st.codes<-data.frame(
@@ -37,11 +49,11 @@ stateFromLower <-function(x) {
 }
 
 
-beers <- read_csv("C:/Users/ashas/github/SMU/Case Study 1/Data/Beers.csv")
-brws <- read_csv("C:/Users/ashas/github/SMU/Case Study 1/Data/Breweries.csv")
+brew <- read.csv('data/Breweries.csv')
+beer <- read.csv('data/Beers.csv')
 
-d<-merge(beers, brws, by.brewery_id = "brewery_id", by.beer_id = "beer_id")
-d
+d <- merge(x = brew,y = beer,by.x = 'Brew_ID', by.y = 'Brewery_id')
+
 
 names(d)[names(d)=="name.x"]<-"beer"
 names(d)[names(d)=="name.y"]<-"brewery"
@@ -50,9 +62,9 @@ names(d)[names(d)=="name.y"]<-"brewery"
 
 # Summary Statistics
 # plot average abv and ibu by style
-states<-map_data("state")
+states <- map_data("state")
 head(states)
-d$region<-stateFromLower(d$state)
+d$region <- stateFromLower(d$state)
 
 # we see that this doesn't work because there is an extra space in the state abbrevations
 levels(d$state)
@@ -140,6 +152,6 @@ ggplot(data=d,aes(x=ibu,y=abv,color=ounces.new))+geom_point(size=1.5,alpha=.8)+
   scale_color_manual(breaks = c("8.4","12","16","19.2","24","32"),
                      values=c("red", "blue", "green","yellow","black","pink"))+theme_bw()
 
-show less
+#show less
 
 View(d)

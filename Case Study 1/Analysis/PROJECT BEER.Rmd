@@ -1,16 +1,15 @@
 ---
-title: "PROECT BEER: By C.Martinez & A. Saxena"
+title: "BREWERY ANALYSIS"
 author: "Casey Martinez & Asha Saxena"
-date: "October 15, 2017"
+date: "October 18, 2017"
 output: html_document
 ---
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
+knitr::opts_knit$set(root.dir = 'C:\\Users\\Casiano\\Documents\\SMU Data Science\\SMU\\Case Study 1')
 ```
-# PROJECT TITLE: BEER
-
-## PROJECT GOALS & OBJECTIVES
+## GOALS & OBJECTIVES
 
 Project Goal is to identify an apparent relationship between the bitterness of the beer and its alcoholic content. 
 
@@ -21,7 +20,7 @@ Objective of the project is to analyze the following:
   4) By Bitterness Level(IBU)
   
 
-## PROJECT SCOPE & PHASES
+## SCOPE & PHASES
 
 Scope of this project is as follows:
   1) Analyzing the data set provided for breweries and beer in United States
@@ -42,16 +41,18 @@ source('Analysis/makefile.R')
 ```
 ### Q1. How many breweries are present in each state?
 
-We found the data set contains 50 states in additon there is also infomation about thecapital Washington DC, total of 51 values for State.
-```{r,echo=TRUE}
+We found the data set contains 50 states in additon to Washington DC. 
+```{r,echo=TRUE,fig.width=15,fig.height=5}
 #question 1
 q1 <- brew %>% group_by(brew$State) %>% summarize(TotalBreweries = n())
 q1 <- as.data.frame(q1)
 
 q1_plot <- ggplot(data = q1, aes(x = as.factor(q1$`brew$State`),y = TotalBreweries)) + 
   geom_col(color = 'red',fill = 'pink') +
-  labs(y = 'Median ABV',title = 'Median Alcohol Content') +
+  labs(y = 'N',x = "State") +
+  ggtitle('Total Number of Breweries per State') +
   theme_economist()
+
 print(q1_plot)
 
 ```
@@ -85,7 +86,7 @@ After merging and cleaning the data, we looked at the median alcohol content and
 
 Please see attached the bar chart to compare.
 
-```{r,echo=TRUE}
+```{r,echo=TRUE,fig.width=15,fig.height=5}
 
 #question4
 q4 <- merged_data %>% group_by(merged_data$State) %>% summarize(median_ABV = median(ABV), median_IBU = median(IBU))
@@ -134,12 +135,14 @@ print(q6)
 ### Q7. Is there an apparent relationship between the bitterness of the beer and its alcoholic content? Draw a scatter plot.
 
 We see here is a linear relationship between the bitterness of the beer and its alcoholic content.
-```{r,echo=TRUE}
+```{r,echo=TRUE,fig.width=15,fig.height=5}
 #scatter plot
 q7 <- ggplot(data = merged_data, aes(x = ABV,y = IBU)) + 
   geom_point() +
   labs(x = 'ABV', y = 'IBU',title = 'International Bitterness Content vs. Alcoholic Content') +
-  theme_economist()  
+  theme_economist() +
+  geom_smooth(method = 'lm')
+  
 print(q7)  
 
 #linear reegression model
