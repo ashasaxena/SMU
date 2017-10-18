@@ -1,5 +1,18 @@
 Beer Case Study Codebook
 
+R Libraries:
+-ggplot2
+-data.table
+-dplyr
+-ggthemes
+
 beer        <- dataframe of raw data file beer.csv
 brew        <- dataframe of raw data file breweries.csv
 merged_data <- dataframe of beer and brew merged by Brewery_ID
+q1          <- dataframe of the total breweries by state
+q3a         <- integer of sum of NA values in ABV column
+q3b         <- integer of sum of NA values in IBU column
+q4          <- dataframe of median IBU by state
+q5a         <- character of state with max ABV
+q5b         <- character of state with max IBU
+q6          <- summary of column ABV of the merged_data dataframe
