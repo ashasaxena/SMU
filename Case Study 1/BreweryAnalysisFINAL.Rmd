@@ -166,7 +166,7 @@ q7 <- ggplot(data = merged_data, aes(x = ABV,y = IBU)) +
   theme_economist() +
   theme(plot.title = element_text(hjust = 0.5)) +
   geom_smooth(method = 'lm') +
-  geom_vline(xintercept = 0.099,color='red')
+  geom_vline(xintercept = 0.099,color = 'red')
   
 print(q7)  
 
@@ -175,5 +175,5 @@ q7model <- lm(IBU ~ ABV, merged_data)
 summary(q7model)
 ```
 
-##**In conclusion, we can state that the rising consumer preference is for flavored and low ABV beer is expected to be the key aspects of the market growth**
+##**In conclusion, we can state that the rising consumer preference is for flavored and low ABV beer is expected to be the key aspects of the market growth.**
 
