@@ -1,15 +1,17 @@
 ---
-title: "BREWERY ANALYSIS"
+title: "PROECT BEER""
 author: "Casey Martinez & Asha Saxena"
-date: "October 18, 2017"
+date: "October 15, 2017"
 output: html_document
 ---
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
-knitr::opts_knit$set(root.dir = 'C:\\Users\\ashas\\github\\SMU\\Case Study 1')
+#knitr::opts_knit$set(root.dir = 'C:\Users\Casiano\Documents\SMU Data Science\SMU\Case Study 1')
 ```
-## GOALS & OBJECTIVES
+# PROJECT TITLE: BEER
+
+## PROJECT GOALS & OBJECTIVES
 
 Project Goal is to identify an apparent relationship between the bitterness of the beer and its alcoholic content. 
 
@@ -20,7 +22,7 @@ Objective of the project is to analyze the following:
   4) By Bitterness Level(IBU)
   
 
-## SCOPE & PHASES
+## PROJECT SCOPE & PHASES
 
 Scope of this project is as follows:
   1) Analyzing the data set provided for breweries and beer in United States
@@ -41,7 +43,7 @@ source('Analysis/makefile.R')
 ```
 ### Q1. How many breweries are present in each state?
 
-We found the data set contains 50 states in additon to Washington DC. 
+We found the data set contains 50 states in additon there is also infomation about thecapital Washington DC, total of 51 values for State.
 ```{r,echo=TRUE,fig.width=15,fig.height=5}
 #question 1
 q1 <- brew %>% group_by(brew$State) %>% summarize(TotalBreweries = n())
@@ -49,13 +51,9 @@ q1 <- as.data.frame(q1)
 
 q1_plot <- ggplot(data = q1, aes(x = as.factor(q1$`brew$State`),y = TotalBreweries)) + 
   geom_col(color = 'red',fill = 'pink') +
-  labs(y = 'N',x = "State") +
-  ggtitle('Total Number of Breweries per State') +
-  theme_economist() +
-  theme(plot.title = element_text(hjust = 0.5))
-
+  labs(y = 'Median ABV',title = 'Median Alcohol Content') +
+  theme_economist()
 print(q1_plot)
-
 ```
 
 ### Q2. Merge beer data with the breweries data. Print the first Six observations and the last six observations to check the merged file.
@@ -75,9 +73,8 @@ First step in cleaning the data is to remove the null values.
 ```{r,echo=TRUE}
 q3a <- sum(is.na(merged_data$ABV))
 q3b <- sum(is.na(merged_data$IBU))
-print(paste('The number of NA values for column ABV is:',q3a))
-print(paste('The number of NA values for column IBU is:',q3b))
-print('All other columns have no NA values')
+print(q3a)
+print(q3b)
 ```
 
 ## PHASE 3: COMPUTATION 
@@ -89,7 +86,6 @@ After merging and cleaning the data, we looked at the median alcohol content and
 Please see attached the bar chart to compare.
 
 ```{r,echo=TRUE,fig.width=15,fig.height=5}
-
 #question4
 q4 <- merged_data %>% group_by(merged_data$State) %>% summarize(median_ABV = median(ABV), median_IBU = median(IBU))
 q4 <- as.data.frame(q4)
@@ -99,15 +95,13 @@ setnames(q4, "merged_data$State", "State")
 q4a <- ggplot(data = q4, aes(x = State,y = median_ABV)) + 
   geom_col(color = 'red',fill = 'pink') +
   labs(y = 'Median ABV',title = 'Median Alcohol Content') +
-  theme_economist() +
-  theme(plot.title = element_text(hjust = 0.5))
+  theme_economist()
                
 #bar chart for median_IBU
 q4b <- ggplot(data = q4, aes(x = State,y = median_IBU)) + 
-  geom_col(color = 'blue',fill = 'yellow') +
+  geom_col(color = 'red',fill = 'pink') +
   labs(y = 'Median IBU',title = 'Median International Bitterness Content') +
-  theme_economist() +
-  theme(plot.title = element_text(hjust = 0.5))
+  theme_economist()                 
 
 print(q4a)
 print(q4b)
@@ -120,13 +114,8 @@ We then looked at the data for state has the maximum alcoholic (ABV) beer and th
 
 We found the following:
 
-```{r,echo=TRUE}
-q5a <- merged_data$State[which.max(merged_data$ABV)]
-print(paste("The state with the most alcholic beer is:",as.character(q5a)))
-
-q5b <- merged_data$State[which.max(merged_data$ABV)]
-print(paste("The state with the most BITTER beer is:",as.character(q5b)))
-```
+**State has the maximum alcoholic (ABV) beer: Colorado (CO)**
+**State has themostbitter (IBU) beer: Missouri (MO)**
 
 
 ## PHASE 4: EVALUATING STATISTICAL RESULTS
@@ -144,16 +133,13 @@ print(q6)
 ### Q7. Is there an apparent relationship between the bitterness of the beer and its alcoholic content? Draw a scatter plot.
 
 We see here is a linear relationship between the bitterness of the beer and its alcoholic content.
-```{r,echo=TRUE,fig.width=15,fig.height=5}
+```{r,echo=TRUE}
 #scatter plot
 q7 <- ggplot(data = merged_data, aes(x = ABV,y = IBU)) + 
   geom_point() +
   labs(x = 'ABV', y = 'IBU',title = 'International Bitterness Content vs. Alcoholic Content') +
   theme_economist() +
-  theme(plot.title = element_text(hjust = 0.5)) +
-  geom_smooth(method = 'lm') +
-  geom_vline(xintercept = 0.099,color='red')
-  
+  geom_smooth(method = 'lm')
 print(q7)  
 
 #linear reegression model
