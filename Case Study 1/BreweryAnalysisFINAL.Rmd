@@ -11,6 +11,8 @@ knitr::opts_knit$set(root.dir = 'C:\\Users\\ashas\\github\\SMU\\Case Study 1')
 ```
 ## INTRODUCTION: 
 
+(Final Presentation) YouTube: https://www.youtube.com/watch?v=2j5r0kXmBCk
+
 The global craft beer market size was valued at USD 85.02 billion and is expected to witness significant growth over the forecast period owing to the increasing penetration of the product.
 
 As the craft beer segment of the beer market continues to grow, Beverage Industry takes an in-depth look at the segment and its future. 
